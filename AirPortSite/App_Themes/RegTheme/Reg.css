@@ -1,0 +1,34 @@
+﻿h2{
+    font-style:italic;
+    color:red;
+    text-align:center;
+}
+
+table{
+    color:white;
+}
+.tb-div{
+    
+}
+.table-form{
+    margin:auto;
+    padding:10px;
+    background-color:dodgerblue;
+    border-style:outset;
+    border-width:3px;
+    color:white;
+}
+
+.buy_block{
+    background-color:dodgerblue;
+    border-style:outset;
+    border-width:3px;
+}
+.scroll-view
+{
+    margin:auto;
+}
+.edit-list{
+    overflow-y: scroll;
+    height: 300px;
+}

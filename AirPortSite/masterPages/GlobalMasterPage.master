@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="GlobalMasterPage.master.cs" Inherits="masterPages_GlobalMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Fly Line Tours Official Page</title>
+    <link href="../App_Themes/MainTheme/Main.css?v=@DateTime.Now.Milliseconds?v=@DateTime.Now.Milliseconds" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        function digitalWatch() {
+        var date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        if (hours < 10) hours = "0" + hours;
+        if (minutes < 10) minutes = "0" + minutes;
+        //if (seconds < 10) seconds = "0" + seconds;
+        document.getElementById("digital_watch").innerHTML = hours + (seconds%2==0?":":" ") + minutes;
+        setTimeout("digitalWatch()", 1000);
+    }
+</script>
+</head>
+<body onload="digitalWatch()">
+    <form id="form1" runat="server">
+    <div class="logo">
+        <img src="../images/LOGO.png"/>
+        <p id="digital_watch"></p>
+        
+    </div>
+    <table class="main-content">
+        <tr>
+            <td class="menu-part">
+                Вы вошли как:<asp:Label ID="lbUser" runat="server" Text=""></asp:Label>
+                <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Выйти" />
+                
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" SiteMapProvider="globalMap" />
+                <asp:SiteMapDataSource ID="SiteMapDataSource2" runat="server" SiteMapProvider="adminMap" />
+                <asp:SiteMapDataSource ID="SiteMapDataSource3" runat="server" SiteMapProvider="logedMap" />
+                <asp:Menu ID="Menu2"  runat="server" DataSourceID="SiteMapDataSource2" Orientation="Vertical"
+                    BackColor="#ff6600" CssClass="menu-part" Font-Names="Verdana" Font-Size="0.6em"
+                    ForeColor="white" StaticSubMenuIndent="5px" StaticDisplayLevels="2" border-radius="0">
+	                    
+	                    <StaticHoverStyle BackColor="#0033cc" ForeColor="White" />
+	                    <StaticMenuItemStyle HorizontalPadding="2px" VerticalPadding="2px" />
+	                    <StaticSelectedStyle BackColor="#ff3300"/>
+	                <LevelMenuItemStyles>
+	                        <asp:MenuItemStyle  Font-Bold="True" Font-Underline="False" ForeColor="White" />
+	                </LevelMenuItemStyles>
+                    </asp:Menu>
+                <br />
+                <asp:Menu ID="Menu1"  runat="server" DataSourceID="SiteMapDataSource1" Orientation="Vertical"
+                    BackColor="#3366ff" CssClass="menu-part" Font-Names="Verdana" Font-Size="1em"
+                    ForeColor="white" StaticSubMenuIndent="15px" StaticDisplayLevels="2">
+	                    
+	                    <StaticHoverStyle BackColor="#0033cc" ForeColor="White" />
+	                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+	                    <StaticSelectedStyle BackColor="#66ff33" />
+	                <LevelMenuItemStyles>
+	                        <asp:MenuItemStyle  Font-Bold="True" Font-Underline="False" ForeColor="White" />
+	                </LevelMenuItemStyles>
+                    </asp:Menu>
+            </td>
+            <td class="content-part">
+                <div>
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+                </asp:ContentPlaceHolder>
+                </div>
+            </td>
+        </tr>
+    </table>
+        <footer>
+            ©Михаленко Влад КИ 5 курс
+    </footer>
+    </form>
+    
+</body>
+    
+</html>
